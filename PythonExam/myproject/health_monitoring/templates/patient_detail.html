@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали пациента</title>
+</head>
+<body>
+    <h1>Детали пациента</h1>
+    <p><strong>ID:</strong> {{ patient.pk }}</p>
+    <p><strong>Пол:</strong> {{ patient.gender}}</p>
+    <p><strong>Возраст:</strong> {{ patient.age}} лет</p>
+
+    {% if health_record %}
+        <h2>Медицинские данные</h2>
+        <p><strong>Рост:</strong> {{ health_record.height }} см</p>
+        <p><strong>Вес:</strong> {{ health_record.weight }} кг</p>
+        <p><strong>Давление:</strong> {{ health_record.systolic_pressure }}/{{ health_record.diastolic_pressure }}</p>
+        <p><strong>Курит:</strong> {{ health_record.smoke|yesno:"Да,Нет" }}</p>
+        <p><strong>Алкоголь:</strong> {{ health_record.alco|yesno:"Да,Нет" }}</p>
+        <p><strong>Активность:</strong> {{ health_record.active|yesno:"Да,Нет" }}</p>
+        <p><strong>Сердечные заболевания:</strong> {{ health_record.cardio|yesno:"Да,Нет" }}</p>
+    {% else %}
+        <p>Медицинские данные отсутствуют.</p>
+    {% endif %}
+
+    <a href="{% url 'patient_list' %}">Назад к списку</a>
+</body>
+</html>

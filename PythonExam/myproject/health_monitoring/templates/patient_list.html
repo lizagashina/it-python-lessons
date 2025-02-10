@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пациентов</title>
+</head>
+<body>
+    <h1>Список пациентов</h1>
+    <ul>
+        {% for patient in patients %}
+            <li>
+                <a href="{% url 'patient_detail' patient.pk %}">
+                    Пациент {{ patient.pk }} - Пол: {{ patient.gender }} - Возраст: {{ patient.age }} лет
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
